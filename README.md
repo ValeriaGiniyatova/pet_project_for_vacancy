@@ -121,7 +121,7 @@ npx playwright test -g "Удаление задачи"
 
 ## Браузер
 
-По умолчанию локально используется **Chrome**. Это можно поменять переменной окружения `BROWSER_CHANNEL`:
+По умолчанию локально используется **Chrome**. Можно поменять переменной окружения `BROWSER_CHANNEL`:
 
 ```bash
 # Windows PowerShell
@@ -134,27 +134,11 @@ set BROWSER_CHANNEL=chrome && npm test
 BROWSER_CHANNEL=chrome npm test
 ```
 
-В CI используется Chromium, который скачивает сам Playwright.
-
 ## Отчёты и отладка
 
 После запуска:
 - `npm run report` открывает HTML-отчёт со списком тестов и временем выполнения
 - для упавших тестов сохраняется **trace**: пошаговая запись действий, скриншоты и сеть. Открывается из HTML-отчёта или командой `npx playwright show-trace <путь к trace.zip>`
-
-## CI
-
-Тесты автоматически запускаются в **GitHub Actions** при `push` и `pull request` в `main`.
-
-Workflow:
-1. устанавливает Node.js и зависимости через `npm ci`;
-2. устанавливает Chromium;
-3. запускает тесты;
-4. сохраняет HTML-отчёт как artifact.
-
-Отчёт доступен в **Actions → нужный запуск → Artifacts**.
-
-Для `npm ci` в репозитории хранится `package-lock.json`.
 
 
 ## Как добавить новый тест
